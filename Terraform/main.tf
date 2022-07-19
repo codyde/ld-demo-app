@@ -15,8 +15,8 @@ provider "launchdarkly" {
 }
 
 resource "launchdarkly_project" "terraform" {
-  key  = "cody-ld-demo-tf"
-  name = "cody-ld-demo-tf"
+  key  = "cody2-ld-demo-tf"
+  name = "cody2-ld-demo-tf"
 
   tags = [
     "terraform",
@@ -53,8 +53,8 @@ resource "launchdarkly_feature_flag" "qrcode" {
   }
   
   defaults {
-    on_variation = 1
-    off_variation = 0
+    on_variation = 0
+    off_variation = 1
   }
 
   tags = [
@@ -81,8 +81,8 @@ resource "launchdarkly_feature_flag" "logoversion" {
   }
   
   defaults {
-    on_variation = 1
-    off_variation = 0
+    on_variation = 0
+    off_variation = 1
   }
 
   tags = [
@@ -100,7 +100,7 @@ resource "launchdarkly_feature_flag" "cardshow" {
   variations {
     value       = "true"
     name        = "Show Release Cards"
-    description = "Show the app delivery release cards"
+    description = "Show the **app delivery** release cards"
   }
   variations {
     value       = "false"
@@ -109,8 +109,8 @@ resource "launchdarkly_feature_flag" "cardshow" {
   }
   
   defaults {
-    on_variation = 1
-    off_variation = 0
+    on_variation = 0
+    off_variation = 1
   }
 
   tags = [
@@ -137,8 +137,8 @@ resource "launchdarkly_feature_flag" "upperimage" {
   }
   
   defaults {
-    on_variation = 1
-    off_variation = 0
+    on_variation = 0
+    off_variation = 1
   }
 
   tags = [
@@ -165,8 +165,8 @@ resource "launchdarkly_feature_flag" "prodHeader" {
   }
   
   defaults {
-    on_variation = 1
-    off_variation = 0
+    on_variation = 0
+    off_variation = 1
   }
 
   tags = [
