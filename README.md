@@ -6,7 +6,17 @@ This appalication is designed to use several feature flags to showcase the abili
 
 This application can be deployed to many different providers, in order for it to run successfully you'll need to leverage an environment variable named `REACT_APP_LD_CLIENT_ID` with the **Client Side SDK** key from LaunchDarkly 
 
+For example - 
+
+```bash
+export REACT_APP_LD_CLIENT_ID=<your client ID>
+```
+
+### Editing and building in Replit
+
 Using [Replit](https://www.replit.com) you can find a repl of this application under [@launchdarkly/flag-demo-app] 
+
+In Replit, you'll need to create a secret that uses the above environment variable to start your repl with the correct information. 
 
 ## Feature Flags 
 
