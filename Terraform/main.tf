@@ -37,7 +37,7 @@ resource "launchdarkly_project" "terraform" {
 resource "launchdarkly_feature_flag" "qrcode" {
   project_key = launchdarkly_project.terraform.key
   key         = "qrcode"
-  name        = "QR Code"
+  name        = "0 - QR Code"
   description = "This flag enables the view of the QR Code on our application canvas for mobile device viewing"
 
   variation_type = "boolean"
@@ -65,7 +65,7 @@ resource "launchdarkly_feature_flag" "qrcode" {
 resource "launchdarkly_feature_flag" "logoversion" {
   project_key = launchdarkly_project.terraform.key
   key         = "logoversion"
-  name        = "Logo Version"
+  name        = "3 - Logo Version"
   description = "This flag controls which logo is visible within the application"
 
   variation_type = "boolean"
@@ -93,7 +93,7 @@ resource "launchdarkly_feature_flag" "logoversion" {
 resource "launchdarkly_feature_flag" "cardshow" {
   project_key = launchdarkly_project.terraform.key
   key         = "cardshow"
-  name        = "Release Cards"
+  name        = "4 - Release Cards"
   description = "This flag controls the visibility of the release cards on the bottom of the UI "
 
   variation_type = "boolean"
@@ -121,7 +121,7 @@ resource "launchdarkly_feature_flag" "cardshow" {
 resource "launchdarkly_feature_flag" "upperimage" {
   project_key = launchdarkly_project.terraform.key
   key         = "upperimage"
-  name        = "Upper Image"
+  name        = "2 - Upper Image"
   description = "Show the upper immage on page"
 
   variation_type = "boolean"
@@ -146,38 +146,10 @@ resource "launchdarkly_feature_flag" "upperimage" {
   ]
 }
 
-resource "launchdarkly_feature_flag" "login" {
-  project_key = launchdarkly_project.terraform.key
-  key         = "login"
-  name        = "Login UI"
-  description = "Show the login box for user targeting"
-
-  variation_type = "boolean"
-  variations {
-    value       = "true"
-    name        = "Login enabled"
-    description = "Login box presented"
-  }
-  variations {
-    value       = "false"
-    name        = "Login Disabled"
-    description = "Not able to login "
-  }
-  
-  defaults {
-    on_variation = 1
-    off_variation = 0
-  }
-
-  tags = [
-    "terraform-managed",   
-  ]
-}
-
 resource "launchdarkly_feature_flag" "prodHeader" {
   project_key = launchdarkly_project.terraform.key
   key         = "prodHeader"
-  name        = "Production Header"
+  name        = "1 - Production Header"
   description = "Enables the production header view in the UI"
 
   variation_type = "boolean"

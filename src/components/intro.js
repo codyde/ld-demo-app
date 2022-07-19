@@ -1,5 +1,4 @@
-export default function Intro (flag) {
-  console.log(flag.release)
+export default function Intro () {
 return (
     <div className="grid h-1/2 grid-cols-4 place-items-center">
       <div className="grid grid-cols-4 col-span-4 space-x-4">
