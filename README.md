@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# LaunchDarkly Flag Demo Application 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This appalication is designed to use several feature flags to showcase the ability to release features in a variety of ways. 
 
-## Available Scripts
+## Running this application 
 
-In the project directory, you can run:
+This application can be deployed to many different providers, in order for it to run successfully you'll need to leverage an environment variable named `REACT_APP_LD_CLIENT_ID` with the **Client Side SDK** key from LaunchDarkly 
 
-### `npm start`
+Using [Replit](https://www.replit.com) you can find a repl of this application under [@launchdarkly/flag-demo-app] 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Feature Flags 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This application uses several feature flags to show LaunchDarkly functionality 
 
-### `npm test`
+* `qrCode` - This feature flag controls the presence of the QR code in the application. You can modify the URL that returns in this by modifying the variable on Line 3 of `/src/components/qrCode.js`
+* `prodHeader` - This feature flag controls the shifting from the introduction of the application, to the updated header with the login URL. This is a standard release of a new feature 
+* `upperimage` - This feature displays the image at the top of the page, in the talk track, we build a **individual target** pointed at the specific user who logs on the lefthand side of the page 
+* `logoversion` - This feature swaps the Osmo image for toggle. We can use this with either device or browser type targeting rules, or perform a progressive rollout to show 50/50 splits (or other percentages) of the old and new version 
+* `cardshow`- This controls the rollout of new feature cards demonstrating "Release" on the bottom of the page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Building the Feature Flag 
 
-### `npm run build`
+In the `/terraform` directoy you'll find a `main.tf` file that contains a manifest for instantiating all the feature flags. Ensure you are updating the project name within this `main.tf` file with your own project. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Execute the following commands: 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+terraform init 
+terraform apply 
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You'll be prompted for a LaunchDarkly API key which you can obtain via [LaunchDarkly](https://app.launchdarkly.com)
